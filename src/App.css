@@ -1,0 +1,22 @@
+/* 
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('/assets/Generic-G20-FR-Classic-DEMO.otf');
+  font-weight: 400;
+  font-style: normal;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+
+
+@theme {
+  --color-sec: #3D1703;
+  --color-primary: #987353;
+  --color-red: #FF5528;
+  --color-black: #1F1F1F;
+  --font-MyCustomFont: "Playfair Display";
+  --font-Lora: "Lora";
+}
+
+@import "tailwindcss";
