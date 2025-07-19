@@ -1,80 +1,77 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Paragraph, Title } from '../ui/StyledComponent';
+import axios from 'axios';
 
-// Sample testimonial data with images
-const testimonials = [
-    {
-        name: 'John Doe',
-        feedback: 'This was one of the best experiences I’ve ever had. Amazing hospitality!',
-        image: '/path/to/john-image.jpg', // Replace with your image path
-    },
-    {
-        name: 'Ravi Kumar',
-        feedback: 'Clean rooms, friendly staff, and great location. Highly recommended!',
-        image: '/path/to/ravi-image.jpg', // Replace with your image path
-    },
-    {
-        name: 'Sara Lee',
-        feedback: 'I enjoyed every moment. Booking was smooth and customer service was excellent.',
-        image: '/path/to/sara-image.jpg', // Replace with your image path
-    },
-    {
-        name: 'Sara Lee',
-        feedback: 'I enjoyed every moment. Booking was smooth and customer service was excellent.',
-        image: '/path/to/sara-image.jpg', // Replace with your image path
-    },
-    {
-        name: 'Sara Lee',
-        feedback: 'I enjoyed every moment. Booking was smooth and customer service was excellent.',
-        image: '/path/to/sara-image.jpg', // Replace with your image path
-    },
-];
+const Testimonials = () => {
+    const [testimonials, setTestimonials] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-const Testinomonials = () => {
+    useEffect(() => {
+        const fetchTestimonials = async () => {
+            try {
+                const res = await axios.get('https://api.bhagwatbhawan.in/api/v1/testimonials/all');
+                setTestimonials(res.data);
+            } catch (err) {
+                console.error(err);
+                setError('Failed to load testimonials');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchTestimonials();
+    }, []);
+
     return (
-        <div className="w-full py-10 bg-white">
-            <div className="text-center mb-6">
-                <h1 className="text-xl font-semibold text-primary">TESTIMONIAL</h1>
-                <Title className=" font-bold text-primary mb-2">Happy Customer Thoughts</Title>
-                <Paragraph className="md:max-w-3xl mx-auto">
-                    Nunc nec magna aculis metus libero vehicula. Nullam iaculis metus vehicula. Aenean sed rutrum purus.
+        <div className="w-full py-16 bg-white">
+            <div className="text-center mb-10">
+                <h1 className="text-lg font-semibold text-primary tracking-wider">TESTIMONIAL</h1>
+                <Title className="text-3xl md:text-4xl font-bold text-primary mb-3">What Our Customers Say</Title>
+                <Paragraph className="text-gray-600 md:max-w-3xl mx-auto">
+                    Hear it from the people whose lives we've touched.
                 </Paragraph>
             </div>
 
-            <div className="mx-auto mt-20 px-32">
-                <Swiper
-                    modules={[Autoplay]}
-                    spaceBetween={30}
-                    slidesPerView={3}
-                    autoplay={{ delay: 4000 }}
-                    loop={true}
-                >
-                    {testimonials.map((item, index) => (
-                        <SwiperSlide key={index}>
-                            <div className="bg-gray-100 rounded-lg w-full shadow-md ">
-                                {/* Image with full rounded style */}
+            <div className="mx-auto px-4 md:px-16">
+                {loading && <p className="text-center text-gray-600">Loading testimonials...</p>}
+                {error && <p className="text-center text-red-600">{error}</p>}
 
-                                <p className="text-gray-700 italic mb-4">"{item.feedback}"</p>
-                                <div className='  '>
+                {!loading && !error && (
+                    <Swiper
+                        modules={[Autoplay]}
+                        spaceBetween={30}
+                        slidesPerView={1}
+                        breakpoints={{
+                            768: { slidesPerView: 2 },
+                            1024: { slidesPerView: 3 }
+                        }}
+                        autoplay={{ delay: 4000 }}
+                        loop={true}
+                    >
+                        {testimonials.map((item) => (
+                            <SwiperSlide key={item._id}>
+                                <div className="bg-gray-100 hover:bg-primary/10 duration-300 rounded-2xl shadow-lg p-6 flex flex-col items-center text-center">
                                     <img
-                                        src={item.image}
+                                        src={item.images?.[0]?.url || '/default-user.png'}
                                         alt={item.name}
-                                        className="w-24 h-24 object-cover rounded-full mx-auto mb-4"
+                                        className="w-24 h-24 object-cover rounded-full border-4 border-primary mb-4"
                                     />
-                                    <h4 className="text-primary text-center  whitespace-nowrap  font-semibold">{item.name}</h4>
+                                    <p className="text-gray-800 italic text-sm mb-4 max-w-xs">"{item.comment}"</p>
+                                    <h4 className="text-primary font-semibold text-lg capitalize">{item.name}</h4>
                                 </div>
-                            </div>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                )}
             </div>
         </div>
     );
 };
 
-export default Testinomonials;
+export default Testimonials;

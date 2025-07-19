@@ -8,16 +8,29 @@ const BookingRoom = () => {
     const [info, setInfo] = useState('');
     const [category, setCategory] = useState('Business Trip');
 
+    const handleSubmit = () => {
+        const message = `
+            *Booking Details:*\n\n
+            *Name:* ${name}\n
+            *Mobile:* ${mobile}\n
+            *Email:* ${email}\n
+            *Additional Information:* ${info}\n
+            *Trip Category:* ${category}
+        `;
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappURL = `https://wa.me/7302284131?text=${encodedMessage}`;
+
+        window.location.href = whatsappURL;
+    };
+
     return (
-        <div className="relative w-[95%] mb-10 sm:w-[90%] md:w-[70%] lg:w-[50%] xl:w-[70%] py-5 p-10  bg-white mx-auto rounded-lg shadow-lg">
+        <div className="relative w-[95%] mb-10 sm:w-[90%] md:w-[70%] lg:w-[50%] xl:w-[70%] py-5 p-10 bg-white mx-auto rounded-lg shadow-lg">
             <img
                 src="/assets/border.png"
                 alt="Border"
                 className="absolute inset-0 w-full p-3 h-full object-fill pointer-events-none z-10"
             />
-
             <div className="relative z-20 p-4 sm:p-6 md:p-8 space-y-4">
-                {/* Name & Mobile */}
                 <div className='flex flex-col sm:flex-row gap-4'>
                     <div className="flex flex-col border border-primary rounded px-4 py-2 w-full">
                         <label className="text-gray-600 font-medium mb-1">Name</label>
@@ -42,7 +55,6 @@ const BookingRoom = () => {
                     </div>
                 </div>
 
-                {/* Email */}
                 <div className="flex flex-col border border-primary rounded px-4 py-2">
                     <label className="text-gray-600 font-medium mb-1">Email Address</label>
                     <input
@@ -54,7 +66,6 @@ const BookingRoom = () => {
                     />
                 </div>
 
-                {/* Additional Info */}
                 <div className="flex flex-col border border-primary rounded px-4 py-2">
                     <label className="text-gray-600 font-medium mb-1">Additional Information</label>
                     <textarea
@@ -66,7 +77,6 @@ const BookingRoom = () => {
                     />
                 </div>
 
-                {/* Category Dropdown */}
                 <CustomDropdown
                     label="Trip Category"
                     options={['Business Trip', 'Solo Trip', 'Family Trip']}
@@ -74,8 +84,10 @@ const BookingRoom = () => {
                     setSelected={setCategory}
                 />
 
-                {/* Submit Button */}
-                <button className="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-sec cursor-pointer transition duration-300">
+                <button
+                    onClick={handleSubmit}
+                    className="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-sec cursor-pointer transition duration-300"
+                >
                     Submit
                 </button>
             </div>

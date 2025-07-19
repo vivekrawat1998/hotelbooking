@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
+    const [user, setUser] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         AOS.init({ duration: 800 });
@@ -14,34 +17,50 @@ const Navbar = () => {
             setIsScrolled(window.scrollY > 10);
         };
 
+        const storedUser = localStorage.getItem('userProfile');
+        if (storedUser) {
+            try {
+                setUser(JSON.parse(storedUser));
+            } catch (error) {
+                console.error('Error parsing userProfile from localStorage:', error);
+            }
+        }
+
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const handleLogout = () => {
+        localStorage.removeItem('userProfile');
+        setUser(null);
+        navigate('/');
+    };
+
     return (
-        <div
-            className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
-                }`}
-            data-aos="fade-down"
-        >
+        <div className={`fixed top-0 left-0 w-full bg-white z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-transparent'}`} data-aos="fade-down">
             <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
                 <div>
                     <h1 className={`text-2xl font-bold transition-colors ${isScrolled ? 'text-black' : 'text-green'}`}>
-                        MyApp
+                       Bhagwat Bhawan
                     </h1>
                 </div>
 
                 {/* Desktop Menu */}
                 <ul className={`hidden md:flex space-x-8 font-semibold text-lg transition-colors ${isScrolled ? 'text-black' : 'text-sec'}`}>
-                    <li className="hover:text-blue-500 cursor-pointer">Home</li>
-                    <li className="hover:text-blue-500 cursor-pointer">About</li>
-                    <li className="hover:text-blue-500 cursor-pointer">Room</li>
-                    <li className="hover:text-blue-500 cursor-pointer">Contact</li>
+                    <Link to="/" className="hover:text-gray-500">Home</Link>
+                    <Link to="/about" className="hover:text-gray-500">About</Link>
+                    <Link to="/rooms" className="hover:text-gray-500">Room</Link>
+                    <Link to="/contact" className="hover:text-gray-500">Contact</Link>
                 </ul>
-
-                {/* Login Button */}
+                {/* Auth Button - Desktop */}
                 <div className="hidden md:block">
-                    <button className="bg-primary hover:bg-sec text-sece px-16 py-2 rounded">Login</button>
+                    {user ? (
+                        <button onClick={handleLogout} className="bg-red-500 hover:bg-red-600 text-white px-8 py-2 rounded transition-all">Logout</button>
+                    ) : (
+                        <Link to="/login">
+                            <button className="bg-sec hover:bg-primary text-white px-8 py-2 rounded transition-all">Login</button>
+                        </Link>
+                    )}
                 </div>
 
                 {/* Mobile Hamburger */}
@@ -54,13 +73,22 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             {menuOpen && (
-                <div className={`md:hidden bg-primary text-black px-4 py-4 space-y-3 shadow-md`}>
+                <div className={`md:hidden bg-primary text-white px-4 py-4 space-y-3 shadow-md`}>
                     <div className="flex flex-col space-y-2">
-                        <span className="hover:text-blue-500 cursor-pointer">Home</span>
-                        <span className="hover:text-blue-500 cursor-pointer">About</span>
-                        <span className="hover:text-blue-500 cursor-pointer">Room</span>
-                        <span className="hover:text-blue-500 cursor-pointer">Contact</span>
-                        <button className="mt-2 bg-primary text-white px-4 py-2 rounded w-max">Login</button>
+                        <Link to="/" onClick={() => setMenuOpen(false)} className="hover:text-blue-200">Home</Link>
+                        <Link to="/about" onClick={() => setMenuOpen(false)} className="hover:text-blue-200">About</Link>
+                        <Link to="/rooms" onClick={() => setMenuOpen(false)} className="hover:text-blue-200">Room</Link>
+                        <Link to="/contact" onClick={() => setMenuOpen(false)} className="hover:text-blue-200">Contact</Link>
+
+                        {user ? (
+                            <button onClick={() => { handleLogout(); setMenuOpen(false); }} className="mt-2 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">
+                                Logout
+                            </button>
+                        ) : (
+                            <Link to="/login" onClick={() => setMenuOpen(false)}>
+                                <button className="mt-2 bg-white text-primary px-4 py-2 rounded hover:bg-gray-200 w-max">Login</button>
+                            </Link>
+                        )}
                     </div>
                 </div>
             )}

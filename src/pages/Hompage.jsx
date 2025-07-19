@@ -9,14 +9,18 @@ import BookingRoom from '../components/Bookroom'
 import { Paragraph, Title } from '../ui/StyledComponent'
 import Testinomonials from '../components/Testinomonials'
 import Gallery from '../components/Gallery'
+import Mantra from '../components/Mantra'
 
 const Hompage = () => {
   return (
     <div>
       <Hero />
+      <Mantra />
       <Categorydetailcard />
       <Findhotel />
-      <Videocontent />
+      <div className='md:block hidden'>
+        <Videocontent />
+      </div>
       <Facilities />
       <Faq />
       <div className='bg-[#2A2825] px-3 pt-20 grid place-items-center  w-full h-screen'>
@@ -27,9 +31,9 @@ const Hompage = () => {
       </div>
       <Testinomonials />
       <Gallery />
-
     </div>
   )
 }
+
 
 export default Hompage

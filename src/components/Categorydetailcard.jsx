@@ -1,27 +1,35 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Paragraph, Title } from '../ui/StyledComponent';
 import Categorycard from './Categorycard';
 
-const roomOptions = [
-  {
-    label: "Single Room",
-    image:
-      "https://thumbs.dreamstime.com/b/luxurious-five-star-hotel-suite-d-background-room-floor-to-ceiling-windows-overlooking-city-skyline-elegant-marble-floors-368960513.jpg",
-  },
-  {
-    label: "Double Room",
-    image:
-      "https://media.istockphoto.com/id/1315468007/photo/luxury-hotel-bedroom.jpg",
-  },
-  {
-    label: "Deluxe Room",
-    image:
-      "https://media.istockphoto.com/id/1340676713/photo/modern-bedroom.jpg",
-  },
-];
+// Map of category names to their hardcoded images
+const imageMap = {
+  "Single room": "https://vuniversity.in/wp-content/uploads/2023/10/Types-of-room-single.png",
+  "Double Room": "https://media.istockphoto.com/id/1315468007/photo/luxury-hotel-bedroom.jpg",
+  "Triple Room": "https://media.istockphoto.com/id/1340676713/photo/modern-bedroom.jpg",
+};
 
-const Categorydetailcard = () => {
-  const [selected, setSelected] = useState(roomOptions[0]);
+const Categorydetailcard = ({ show }) => {
+  const [categories, setCategories] = useState([]);
+  const [selected, setSelected] = useState(null);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const res = await axios.get("https://api.bhagwatbhawan.in/api/v1/category/all", {withCredentials: true});
+        const categoriesWithImages = res?.data.map((cat) => ({
+          ...cat,
+          image: imageMap[cat.name] || "",
+        }));
+        setCategories(categoriesWithImages);
+        setSelected(categoriesWithImages[0]);
+      } catch (err) {
+        console.error("Error fetching categories:", err.message);
+      }
+    };
+    fetchCategories();
+  }, []);
 
   return (
     <section className="w-full md:p-20 px-3">
@@ -39,13 +47,13 @@ const Categorydetailcard = () => {
       <div className="block md:hidden mt-10">
         <select
           onChange={(e) =>
-            setSelected(roomOptions.find((opt) => opt.label === e.target.value))
+            setSelected(categories.find((opt) => opt.name === e.target.value))
           }
           className="w-full p-3 rounded-lg border border-primary text-primary font-semibold"
         >
-          {roomOptions.map((room, idx) => (
-            <option key={idx} value={room.label}>
-              {room.label}
+          {categories.map((room) => (
+            <option key={room._id} value={room.name}>
+              {room.name}
             </option>
           ))}
         </select>
@@ -53,20 +61,27 @@ const Categorydetailcard = () => {
 
       {/* Desktop Tabs */}
       <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-20">
-        {roomOptions.map((room, idx) => (
-          <div key={idx} className="flex items-center group gap-5">
+        {categories.map((room) => (
+          <div
+            key={room._id}
+            onClick={() => setSelected(room)}
+            className="cursor-pointer flex items-center group gap-5"
+          >
             <h1
-              className="text-primary/30 group-hover:text-primary font-MyCustomFont md:whitespace-nowrap"
+              className={`${selected?._id === room._id
+                ? 'text-primary font-bold'
+                : 'text-primary/30 group-hover:text-primary'
+                } font-MyCustomFont md:whitespace-nowrap`}
               style={{ fontSize: "clamp(1rem, 3vw , 2.2rem)" }}
             >
-              {room.label}
+              {room.name}
             </h1>
 
             <div className="relative">
               <img
                 className="w-[20vw] h-[10vh] rounded-full object-cover"
                 src={room.image}
-                alt={room.label}
+                alt={room.name}
               />
               <div className="absolute inset-0 rounded-full border-[7px] border-white opacity-0 group-hover:opacity-100 ease-in-out transition-all duration-1000"></div>
             </div>
@@ -74,7 +89,8 @@ const Categorydetailcard = () => {
         ))}
       </div>
 
-      <Categorycard />
+      {selected && <Categorycard categoryId={selected._id} />}
+
     </section>
   );
 };

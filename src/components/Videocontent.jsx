@@ -35,11 +35,10 @@ const Videocontent = () => {
                         </Marquee>
                     </div>
                 </div>
-
                 {/* 🔹 Summer Offer Content */}
                 <div className="bg-[#3D3832]/30 bg-opacity-20  text-white p-10 h-full rounded-r-full max-w-3xl z-40">
                     <h1 className="text-5xl font-bold text-primary uppercase mb-4">Summer Offer</h1>
-                    <h2 className="md:text-9xl text-white text-2xl mb-4">Starts From <br /> $100 </h2>
+                    <h2 className="md:text-9xl text-white text-2xl mb-4">Starts From <br /> 1000rs </h2>
                     <p className="text-xl">
                         Enjoy luxurious stays this summer with our special offers. Relax, unwind, and make unforgettable memories.
                     </p>

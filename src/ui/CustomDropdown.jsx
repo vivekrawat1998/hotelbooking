@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
 
 const CustomDropdown = ({ label, options, selected, setSelected }) => {
     const [isOpen, setIsOpen] = useState(false);
-
     return (
-        <div className="relative flex  border gap-5  rounded py-3 border-primary w-full mb-4">
-            <label className="block text-center  text-gray-600 pl-2 mb-1 font-medium">{label}</label>
+        <div className="relative flex border gap-5 rounded py-3 border-primary w-full mb-4">
+            <label className="block text-center text-gray-600 pl-2 mb-1 font-medium">{label}</label>
             <div
-                className=" w-full rounded-lg text-start px-4 py-2 text-sec bg-white cursor-pointer"
+                className="w-full rounded-lg text-start px-4 py-2 text-sec bg-white cursor-pointer flex justify-between items-center"
                 onClick={() => setIsOpen(!isOpen)}
             >
-                {selected} {label === "Adults" ? (selected > 1 ? "Adults" : "Adult") : (selected > 1 ? "Children" : "Child")}
+                <span>{selected}</span>
+                <ChevronDown className="text-gray-600" size={20} />
             </div>
 
             {isOpen && (
@@ -22,9 +23,9 @@ const CustomDropdown = ({ label, options, selected, setSelected }) => {
                                 setSelected(option);
                                 setIsOpen(false);
                             }}
-                            className=" hover:bg-primary hover:text-white text-sec cursor-pointer transition-all"
+                            className="hover:bg-primary hover:text-white text-sec cursor-pointer transition-all py-2"
                         >
-                            {option} {label === "Adults" ? (option > 1 ? "Adults" : "Adult") : (option > 1 ? "Children" : "Child")}
+                            {option}
                         </div>
                     ))}
                 </div>
@@ -32,4 +33,5 @@ const CustomDropdown = ({ label, options, selected, setSelected }) => {
         </div>
     );
 };
+
 export default CustomDropdown;

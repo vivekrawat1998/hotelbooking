@@ -1,48 +1,91 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
+import { useNavigate } from 'react-router-dom'; // ✅ Import useNavigate
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-// Sample image array
-const images = [
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0JxgI2qCHTsxA7QPfdfjYhu9rf6CT_-1mAA&s',
-    'https://www.seleqtionshotels.com/content/dam/seleqtions/Connaugth/TCPD_PremiumBedroom4_1235.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg',
-    'https://images.unsplash.com/photo-1631049552057-403cdb8f0658?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfHx8MA%3D%3D',
-    'https://thumbs.dreamstime.com/b/hotel-room-beautiful-orange-sofa-included-43642330.jpg',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7A2tDJFnXOjaAm_qL2MYmHOZEjMn7Pn7ksQ&s',
-    'https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?cs=srgb&dl=pexels-pixabay-271618.jpg&fm=jpg',
-    'https://static01.nyt.com/images/2019/03/24/travel/24trending-shophotels1/24trending-shophotels1-superJumbo.jpg',
-    'https://img.freepik.com/free-photo/interior-modern-comfortable-hotel-room_1232-1822.jpg?semt=ais_hybrid&w=740',
-    'https://images.squarespace-cdn.com/content/v1/56dfd5cc9f7266ed7f04b64d/1585743751085-N2317B7K3I2YBZHPHENO/image-asset.jpeg',
-    'https://www.jaypeehotels.com/blog/wp-content/uploads/2024/09/Blog-6-scaled.jpg',
+// Array of most visited places in Mathura
+const places = [
+    {
+        name: 'Shri Krishna Janmabhoomi',
+        image: 'https://shrimathuraji.com/wp-content/uploads/2016/09/shri-krishna-janamsthan-temple-mathura.jpg',
+    },
+    {
+        name: 'Dwarkadhish Temple',
+        image: 'https://s7ap1.scene7.com/is/image/incredibleindia/dwarkadish-temple-01-attr-hero?qlt=82&ts=1726734784547',
+    },
+    {
+        name: 'Vishram Ghat',
+        image: 'https://s7ap1.scene7.com/is/image/incredibleindia/vishram-ghat-mathura-uttar-pradesh-1-attr-hero?qlt=82&ts=1726649207339',
+    },
+    {
+        name: 'Govardhan Hill',
+        image: 'https://www.mathuravrindavantourpackages.com/images/temple/slider/govardhan-hill-mathura-1.webp',
+    },
+    {
+        name: 'Radha Kund',
+        image: 'https://static.wixstatic.com/media/5cd086_a6bc4484587449128a655dddfc4e6580~mv2.jpg/v1/fill/w_1000,h_667,al_c,q_85,usm_0.66_1.00_0.01/5cd086_a6bc4484587449128a655dddfc4e6580~mv2.jpg',
+    },
+    {
+        name: 'Prem Mandir, Vrindavan',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGH7fD581JtNyWoFJBnZwzg29kaDShABb7jw&s',
+    },
+    {
+        name: 'Banke Bihari Temple',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYEpR1RsfaguZHwzcC6kPHAK4Jqbf2kWEGJA&s',
+    },
+    {
+        name: 'ISKCON Vrindavan',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdeNnPwG1pR4WC_Aq1ZVxeWkmJr0MzCFVJHg&s',
+    },
 ];
 
 const Gallery = () => {
+    const navigate = useNavigate(); // ✅ Initialize navigate
+
+    const handleOnClick = () => {
+        navigate("/contact"); // ✅ This now works
+    };
+
     return (
-        <div className="w-full py-10   bg-white">
+        <div className="w-full py-14 bg-gradient-to-b from-white to-blue-50">
             <div className="w-[95%] mx-auto">
+                <h2 className="text-3xl md:text-4xl font-MyCustomFont font-bold text-center mb-10 text-sec">
+                    Most Visited Places in Mathura
+                </h2>
+
                 <Swiper
                     modules={[Autoplay]}
-                    spaceBetween={10}
+                    spaceBetween={15}
                     slidesPerView={4}
                     speed={1000}
                     autoplay={{ delay: 3000 }}
                     loop={true}
                     breakpoints={{
-                        320: { slidesPerView: 2 },
-                        480: { slidesPerView: 3 },
-                        768: { slidesPerView: 5 },
+                        320: { slidesPerView: 1.2 },
+                        480: { slidesPerView: 2 },
+                        768: { slidesPerView: 3 },
                         1024: { slidesPerView: 4 },
                     }}
                 >
-                    {images.map((img, idx) => (
+                    {places.map((place, idx) => (
                         <SwiperSlide key={idx}>
-                            <img
-                                src={img}
-                                alt={`gallery-${idx}`}
-                                className="w-[500px] h-[400px] object-cover rounded-md shadow-sm mx-auto"
-                            />
+                            <div
+                                onClick={handleOnClick}
+                                className="flex flex-col items-center bg-white rounded-lg shadow-md p-3 hover:shadow-xl transition duration-300 ease-in-out cursor-pointer"
+                            >
+                                <div className="overflow-hidden rounded-md">
+                                    <img
+                                        src={place.image}
+                                        alt={place.name}
+                                        className="w-[300px] h-[250px] object-cover transform hover:scale-105 transition duration-300"
+                                    />
+                                </div>
+                                <p className="mt-3 text-center font-semibold text-lg text-gray-800">
+                                    {place.name}
+                                </p>
+                            </div>
                         </SwiperSlide>
                     ))}
                 </Swiper>

@@ -3,20 +3,20 @@ import { Paragraph, Title } from '../ui/StyledComponent';
 
 const faqs = [
     {
-        question: "What services do you provide?",
-        answer: "We offer luxury accommodation, spa services, guided tours, and all-inclusive packages tailored to your needs."
+        question: "How can I book a room at Bhagwat Bhawan?",
+        answer: "You can easily book your stay through our website’s booking form or call our reservation desk directly. Walk-ins are also welcome, subject to availability."
     },
     {
-        question: "How can I make a booking?",
-        answer: "You can book directly through our website, mobile app, or by calling our reservation desk."
+        question: "How far is Bhagwat Bhawan from Krishna Janmabhoomi?",
+        answer: "We are located just minutes away from Krishna Janmabhoomi and other major temples, making it very convenient for darshan and sightseeing."
     },
     {
-        question: "Do you offer any discounts?",
-        answer: "Yes, we have seasonal discounts and early-bird offers. Subscribe to our newsletter for updates."
+        question: "What facilities are available at the property?",
+        answer: "We offer clean and serene rooms, spiritual ambience, hot water, AC/Non-AC options, 24/7 reception, and easy access to nearby pilgrimage spots."
     },
     {
-        question: "Are pets allowed?",
-        answer: "Yes, we are a pet-friendly resort with designated areas for pets."
+        question: "Do you provide parking and meal options?",
+        answer: "Yes, we have secure parking space and can assist you with sattvik meals or recommend nearby prasad bhojanalayas."
     },
 ];
 
@@ -32,8 +32,8 @@ const Faq = () => {
             {/* Left Side Image */}
             <div className="w-full">
                 <img
-                    src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092"
-                    alt="Resort"
+                    src="/WhatsApp Image 2025-07-08 at 10.03.40.jpeg"
+                    alt="Bhagwat Bhawan"
                     className="w-full h-auto rounded-xl shadow-lg"
                 />
             </div>
@@ -41,9 +41,9 @@ const Faq = () => {
             {/* Right Side Accordion */}
             <div className="space-y-6">
                 <h2 className="text-4xl font-bold text-primary">FREQUENTLY ASKED QUESTIONS</h2>
-                <Title>Our Expert Answers</Title>
+                <Title>Common Queries Answered</Title>
                 <Paragraph>
-                    Zenean sed rutrum purus. Nunc nec magna laoreet, sodales nisi at, co rutrum viverra. Nunc nec magna aculis metus libero vehicula Nullam iaculis metus nehicula
+                    Have questions before your divine stay? Here are some of the most common things our guests ask us about Bhagwat Bhawan and their visit to Mathura.
                 </Paragraph>
                 <div className="space-y-4">
                     {faqs.map((faq, index) => (
@@ -64,7 +64,7 @@ const Faq = () => {
                                 </span>
                             </button>
                             <div
-                                className={`px-4 overflow-hidden transition-all duration-500  ease-in-out ${activeIndex === index ? 'max-h-40' : 'max-h-0'
+                                className={`px-4 overflow-hidden transition-all duration-500 ease-in-out ${activeIndex === index ? 'max-h-40' : 'max-h-0'
                                     }`}
                             >
                                 <p className="text-sec mt-2 mb-2">{faq.answer}</p>
