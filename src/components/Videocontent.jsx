@@ -12,7 +12,7 @@ const Videocontent = () => {
                 loop
                 playsInline
             >
-                <source src="https://herittage.wpengine.com/wp-content/uploads/2023/06/bg-video-banner.mp4" type="video/mp4" />
+                <source src="https://res.cloudinary.com/dhn81m80y/video/upload/v1753264995/m1_lajunc.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
 
@@ -36,13 +36,13 @@ const Videocontent = () => {
                     </div>
                 </div>
                 {/* 🔹 Summer Offer Content */}
-                <div className="bg-[#3D3832]/30 bg-opacity-20  text-white p-10 h-full rounded-r-full max-w-3xl z-40">
+                {/* <div className="bg-[#3D3832]/30 bg-opacity-20  text-white p-10 h-full rounded-r-full max-w-3xl z-40">
                     <h1 className="text-5xl font-bold text-primary uppercase mb-4">Summer Offer</h1>
                     <h2 className="md:text-9xl text-white text-2xl mb-4">Starts From <br /> 1000rs </h2>
                     <p className="text-xl">
                         Enjoy luxurious stays this summer with our special offers. Relax, unwind, and make unforgettable memories.
                     </p>
-                </div>
+                </div> */}
             </div>
         </div>
     );

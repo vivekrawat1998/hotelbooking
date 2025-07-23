@@ -32,9 +32,9 @@ const Faq = () => {
             {/* Left Side Image */}
             <div className="w-full">
                 <img
-                    src="/WhatsApp Image 2025-07-08 at 10.03.40.jpeg"
+                    src="/ChatGPT Image Jul 23, 2025, 03_22_27 PM.png"
                     alt="Bhagwat Bhawan"
-                    className="w-full h-auto rounded-xl shadow-lg"
+                    className="w-full h-[80vh] object-contain rounded-full "
                 />
             </div>
 

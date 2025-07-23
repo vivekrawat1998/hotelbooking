@@ -18,7 +18,7 @@ const BookingForm = () => {
     useEffect(() => {
         const fetchRooms = async () => {
             try {
-                const res = await axios.get('https://api.bhagwatbhawan.in/api/v1/room/all',{withCredentials: true});
+                const res = await axios.get('https://api.bhagwatbhawan.in/api/v1/room/all', { withCredentials: true });
                 setRooms(res?.data?.rooms);
             } catch (err) {
                 console.error("Error fetching rooms", err);
@@ -75,7 +75,7 @@ const BookingForm = () => {
     };
 
     return (
-        <div className="relative w-[90vw] py-10 bg-white max-w-xl mx-auto">
+        <div className="relative w-[90vw]  z-10py-10 bg-white max-w-xl mx-auto">
             <img
                 src="/assets/border.png"
                 alt="Border"

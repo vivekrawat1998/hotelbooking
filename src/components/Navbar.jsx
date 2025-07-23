@@ -37,12 +37,10 @@ const Navbar = () => {
     };
 
     return (
-        <div className={`fixed top-0 left-0 w-full bg-white z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-transparent'}`} data-aos="fade-down">
+        <div className={`fixed top-0 left-0 w-full bg-white z-999999 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-transparent'}`} data-aos="fade-down">
             <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
                 <div>
-                    <h1 className={`text-2xl font-bold transition-colors ${isScrolled ? 'text-black' : 'text-green'}`}>
-                       Bhagwat Bhawan
-                    </h1>
+                    <img className={`w-full h-20 font-bold transition-colors ${isScrolled ? 'text-black' : 'text-green'}`} src='/Website Design (92).png ' alt='' />
                 </div>
 
                 {/* Desktop Menu */}
@@ -51,6 +49,7 @@ const Navbar = () => {
                     <Link to="/about" className="hover:text-gray-500">About</Link>
                     <Link to="/rooms" className="hover:text-gray-500">Room</Link>
                     <Link to="/contact" className="hover:text-gray-500">Contact</Link>
+                    <Link to="/blog" className="hover:text-gray-500">Blog</Link>
                 </ul>
                 {/* Auth Button - Desktop */}
                 <div className="hidden md:block">

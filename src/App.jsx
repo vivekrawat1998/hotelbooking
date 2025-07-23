@@ -14,6 +14,8 @@ import Rooms from './pages/Rooms'
 import SignupPage from './pages/SignupPage'
 import { ToastContainer } from 'react-toastify'
 import Contact from './pages/ContactPage'
+import Blogs from './components/BlogSection'
+import ReadBlog from './components/ReadBlog'
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
             <Route path="/room/:roomId/:categoryId" element={<Checkhout />} />
             <Route path="/payment/:bookingId" element={<PaymentPage />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/blog" element={<Blogs />} />
+            <Route path='/read-blog/:id' element={<ReadBlog />} />
           </Route>
         </Routes>
       </div>

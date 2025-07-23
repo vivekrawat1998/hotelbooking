@@ -17,7 +17,7 @@ const Contact = () => {
     setStatus(null);
 
     try {
-      const res = await axios.post(`${base_url}/api/v1/contactQuery/`, form); 
+      const res = await axios.post(`${base_url}/api/v1/contactQuery/`, form);
       setStatus({ type: 'success', message: res.data.message });
       setForm({ name: '', email: '', Phone: '', message: '' });
     } catch (err) {
@@ -47,32 +47,28 @@ const Contact = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-4">
               <FaPhoneAlt className="text-primary text-xl" />
-              <span className="text-gray-700 text-lg">+91 98765 43210</span>
+              <span className="text-gray-700 text-lg">+91 6397004897</span>
             </div>
             <div className="flex items-center gap-4">
               <FaEnvelope className="text-primary text-xl" />
-              <span className="text-gray-700 text-lg">info@bhagwatbhawan.com</span>
+              <span className="text-gray-700 text-lg">bhagwatbhawan8@gmail.com</span>
             </div>
             <div className="flex items-start gap-4">
               <FaMapMarkerAlt className="text-primary text-xl mt-1" />
               <span className="text-gray-700 text-lg">
-                Bhagwat Bhawan, Near Krishna Janmabhoomi, Mathura, Uttar Pradesh, India
+                D-29 New shanti nagar mal godam road mathura near mathura junction
               </span>
             </div>
           </div>
 
           {/* Google Map */}
           <div className="w-full h-[300px] rounded-lg overflow-hidden shadow-lg">
-            <iframe
-              title="Bhagwat Bhawan Map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.1438599919457!2d77.67332097437694!3d27.492383837861624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397371010a2b6c39%3A0x6c1c2f4efc2c4c6a!2sShri%20Krishna%20Janmasthan%20Temple!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-              width="100%"
+            <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3539.4023444057893!2d77.6680126754596!3d27.48785997630909!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjfCsDI5JzE2LjMiTiA3N8KwNDAnMTQuMSJF!5e0!3m2!1sen!2sin!4v1753271786514!5m2!1sen!2sin"    width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen=""
               loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+              referrerPolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
 

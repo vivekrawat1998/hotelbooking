@@ -7,7 +7,7 @@ const Footer = () => {
                 <div className="max-w-7xl mx-auto px-6 py-26 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
                     {/* Logo and Description */}
                     <div>
-                        <img src="/assets/logo.png" alt="Logo" className="w-28 mb-4" />
+                        <img src="/Website Design (92).png" alt="Logo" className="w-full h-24 mb-10" />
                         <p className="text-sm">
                             We provide top-notch hospitality and booking experiences. Your comfort is our priority.
                         </p>
@@ -17,11 +17,10 @@ const Footer = () => {
                     <div>
                         <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
                         <ul className="space-y-2 text-sm">
-                            <li><a href="#" className="hover:text-primary">Home</a></li>
-                            <li><a href="#" className="hover:text-primary">About Us</a></li>
-                            <li><a href="#" className="hover:text-primary">Rooms</a></li>
-                            <li><a href="#" className="hover:text-primary">Gallery</a></li>
-                            <li><a href="#" className="hover:text-primary">Contact</a></li>
+                            <li><a href="/" className="hover:text-primary">Home</a></li>
+                            <li><a href="/aboutus" className="hover:text-primary">About Us</a></li>
+                            <li><a href="/rooms" className="hover:text-primary">Rooms</a></li>
+                            <li><a href="/contact" className="hover:text-primary">Contact</a></li>
                         </ul>
                     </div>
 
@@ -29,9 +28,9 @@ const Footer = () => {
                     <div>
                         <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
                         <ul className="text-sm space-y-2">
-                            <li>📍 123 Dream Street, Paradise City</li>
-                            <li>📞 +91 98765 43210</li>
-                            <li>📧 support@example.com</li>
+                            <li>📍 D-29 New shanti nagar mal godam road mathura near mathura junction</li>
+                            <li>📞 +91 6397004897</li>
+                            <li>📧 bhagwatbhawan8@gmail.com</li>
                         </ul>
                     </div>
                 </div>

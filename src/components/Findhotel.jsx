@@ -1,6 +1,6 @@
 import React from 'react';
 import { Paragraph, Title } from '../ui/StyledComponent';
-import { FaBullseye, FaEye } from 'react-icons/fa';
+import { FaBullseye, FaEye, FaAward, FaCheckCircle, FaUsers } from 'react-icons/fa';
 
 const Findhotel = () => {
   return (
@@ -9,7 +9,7 @@ const Findhotel = () => {
       <div className='flex flex-col sm:flex-row items-center justify-center gap-6'>
         <img
           className='w-full object-cover rounded-xl'
-          src='/triplex room.jfif'
+          src='/Website Design (91).png'
           alt='Hotel Room 1'
         />
       </div>
@@ -22,23 +22,27 @@ const Findhotel = () => {
           Nestled in the divine land of Mathura, Bhagwat Bhawan offers unmatched comfort with spiritual serenity. Experience elegant rooms, warm hospitality, and close proximity to sacred sites.
         </Paragraph>
 
-        {/* Awards */}
+        {/* Highlights Section with Icons */}
         <div className='mt-10'>
-          <h1 className='md:text-2xl text-xl font-semibold'>Best Hospitality Awards</h1>
-          <div className='grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6'>
-            {[
-              'https://herittage.wpengine.com/wp-content/uploads/2023/05/awards-image-4.png',
-              'https://herittage.wpengine.com/wp-content/uploads/2023/05/awards-image-3.png',
-              'https://herittage.wpengine.com/wp-content/uploads/2023/05/awards-image-2.png',
-              'https://herittage.wpengine.com/wp-content/uploads/2023/05/awards-image-5.png',
-            ].map((src, index) => (
-              <img
-                key={index}
-                className='w-16 h-16 sm:w-20 sm:h-20 object-contain mx-auto'
-                src={src}
-                alt={`Award ${index + 1}`}
-              />
-            ))}
+          <h1 className='md:text-2xl text-xl font-semibold'>Highlights</h1>
+          <div className='grid grid-cols-3 gap-6 mt-6 text-center'>
+            {/* Best Hospitality Award */}
+            <div className='flex flex-col items-center gap-3 text-primary'>
+              <FaAward className='text-5xl mx-auto' />
+              <p className='font-semibold'>Best Hospitality Award</p>
+            </div>
+
+            {/* Tourist Permission */}
+            <div className='flex flex-col items-center gap-3 text-primary'>
+              <FaCheckCircle className='text-5xl mx-auto' />
+              <p className='font-semibold'>Tourist Permission</p>
+            </div>
+
+            {/* 1500+ tourists visited */}
+            <div className='flex flex-col items-center gap-3 text-primary'>
+              <FaUsers className='text-5xl mx-auto' />
+              <p className='font-semibold'>1500+ Tourists Visited</p>
+            </div>
           </div>
 
           {/* Mission & Vision */}
@@ -48,19 +52,23 @@ const Findhotel = () => {
               <FaBullseye className='text-primary text-4xl sm:text-5xl' />
               <div>
                 <h1 className='text-lg font-semibold'>Our Mission</h1>
-                <p>To provide a peaceful and divine lodging experience enriched by Mathura's cultural and spiritual essence.</p>
+                <p>
+                  To provide a peaceful and divine lodging experience enriched by Mathura's cultural and spiritual essence.
+                </p>
               </div>
             </div>
 
             {/* Optional separator for large screens */}
-            <div className="hidden md:block border border-primary h-[10vh]" />
+            <div className='hidden md:block border border-primary h-[10vh]' />
 
             {/* Vision */}
             <div className='flex items-start gap-4'>
               <FaEye className='text-primary text-4xl sm:text-5xl' />
               <div>
                 <h1 className='text-lg font-semibold'>Our Vision</h1>
-                <p>To be Mathura’s most welcoming spiritual sanctuary for pilgrims and travelers alike.</p>
+                <p>
+                  To be Mathura’s most welcoming spiritual sanctuary for pilgrims and travelers alike.
+                </p>
               </div>
             </div>
           </div>

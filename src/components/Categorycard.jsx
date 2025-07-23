@@ -1,19 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { Paragraph, Title } from '../ui/StyledComponent';
-import { FaWifi, FaTv, FaUtensils, FaSwimmer, FaSpa } from 'react-icons/fa';
+import { FaWifi, FaTv, FaUtensils, FaSwimmer, FaSpa, FaWater, FaTruckPickup } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useRoomContext } from '../context/Roomcontext';
+import { ParkingCircle } from 'lucide-react';
 
 const amenities = [
     { icon: <FaWifi className="text-xl text-primary" />, label: 'Free Wi-Fi' },
-    { icon: <FaTv className="text-xl text-primary" />, label: 'LED TV' },
+    { icon: <FaTruckPickup className="text-xl text-primary" />, label: 'Pickup from Station or bus stand' },
     { icon: <FaUtensils className="text-xl text-primary" />, label: 'Room Service' },
-    { icon: <FaSwimmer className="text-xl text-primary" />, label: 'Swimming Pool' },
-    { icon: <FaSpa className="text-xl text-primary" />, label: 'Spa & Wellness' },
+{ icon: <ParkingCircle className="text-xl text-primary" />, label: 'Car Parking Space' },
+    { icon: <FaWater className="text-xl text-primary" />, label: 'Complementry Watterbottle' },
 ];
 
 const Categorycard = ({ categoryId }) => {

@@ -13,16 +13,13 @@ const places = [
     },
     {
         name: 'Dwarkadhish Temple',
-        image: 'https://s7ap1.scene7.com/is/image/incredibleindia/dwarkadish-temple-01-attr-hero?qlt=82&ts=1726734784547',
+        image: 'https://www.holidify.com/images/cmsuploads/compressed/44740200661_87a6f2d457_b_20190409174705_20190409174732.jpg',
     },
     {
         name: 'Vishram Ghat',
         image: 'https://s7ap1.scene7.com/is/image/incredibleindia/vishram-ghat-mathura-uttar-pradesh-1-attr-hero?qlt=82&ts=1726649207339',
     },
-    {
-        name: 'Govardhan Hill',
-        image: 'https://www.mathuravrindavantourpackages.com/images/temple/slider/govardhan-hill-mathura-1.webp',
-    },
+
     {
         name: 'Radha Kund',
         image: 'https://static.wixstatic.com/media/5cd086_a6bc4484587449128a655dddfc4e6580~mv2.jpg/v1/fill/w_1000,h_667,al_c,q_85,usm_0.66_1.00_0.01/5cd086_a6bc4484587449128a655dddfc4e6580~mv2.jpg',
@@ -34,6 +31,10 @@ const places = [
     {
         name: 'Banke Bihari Temple',
         image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYEpR1RsfaguZHwzcC6kPHAK4Jqbf2kWEGJA&s',
+    },
+    {
+        name: 'Radha Rani Temple',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/7/74/Radharani_Temple_Barsana_2.jpg',
     },
     {
         name: 'ISKCON Vrindavan',

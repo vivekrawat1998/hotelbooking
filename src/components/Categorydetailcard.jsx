@@ -6,8 +6,7 @@ import Categorycard from './Categorycard';
 // Map of category names to their hardcoded images
 const imageMap = {
   "Single room": "https://vuniversity.in/wp-content/uploads/2023/10/Types-of-room-single.png",
-  "Double Room": "https://media.istockphoto.com/id/1315468007/photo/luxury-hotel-bedroom.jpg",
-  "Triple Room": "https://media.istockphoto.com/id/1340676713/photo/modern-bedroom.jpg",
+  "Double Room": "https://roomraccoon.com/wp-content/uploads/2024/06/DOUBLE-ROOM-FEATURED-BLOG-IMAGES-3.png",
 };
 
 const Categorydetailcard = ({ show }) => {
@@ -17,13 +16,14 @@ const Categorydetailcard = ({ show }) => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await axios.get("https://api.bhagwatbhawan.in/api/v1/category/all", {withCredentials: true});
+        const res = await axios.get("https://api.bhagwatbhawan.in/api/v1/category/all", { withCredentials: true });
         const categoriesWithImages = res?.data.map((cat) => ({
           ...cat,
           image: imageMap[cat.name] || "",
         }));
-        setCategories(categoriesWithImages);
-        setSelected(categoriesWithImages[0]);
+        const limitedCategories = categoriesWithImages.slice(0, 2); // Only first 2
+        setCategories(limitedCategories);
+        setSelected(limitedCategories[0]);
       } catch (err) {
         console.error("Error fetching categories:", err.message);
       }

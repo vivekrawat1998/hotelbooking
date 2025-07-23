@@ -51,7 +51,6 @@ const Roomdetails = () => {
 
                     <h3 className="text-xl font-bold uppercase">{roomDetails.name}</h3>
                     <Paragraph className="mt-2">{roomDetails.description}</Paragraph>
-
                     <div className="mt-4">
                         <h4 className="font-semibold">Price: ₹{roomDetails.basePricePerNight} / night</h4>
                     </div>
@@ -61,12 +60,11 @@ const Roomdetails = () => {
                         <Swiper spaceBetween={10} slidesPerView={1} loop={true} className="rounded-xl overflow-hidden w-full">
                             {roomDetails.images?.map((img) => (
                                 <SwiperSlide key={img._id}>
-                                    <img src={img.url} alt="room" className="w-full object-contain h-[70vh]" />
+                                    <img src={img.url} alt="room" className="w-full object-fit h-[70vh]" />
                                 </SwiperSlide>
                             ))}
                         </Swiper>
                     </div>
-
                 </div>
             </section>
             <Roomdescription />

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Mantra = () => {
   return (
-    <div className="bg-[#1b1b1b]/80 py-4 text-center relative overflow-hidden">
+    <div className="bg-[#1b1b1b]/80 py-4 md:mt-0 mt-32 text-center relative overflow-hidden">
       <marquee
         behavior="scroll"
         direction="left"
